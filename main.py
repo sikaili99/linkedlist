@@ -1,7 +1,7 @@
 class Node:
   def __init__(self, data=None, next=None):
     self.data = data
-    self.next = None
+    self.next = next
 
 class LinkedList:
   def __init__(self):
@@ -24,9 +24,10 @@ class LinkedList:
       itr = itr.next
     print(lstr)
 
-llist = LinkedList()
-
-llist.insert_at_beginning(4)
-llist.insert_at_beginning(5)
-
-llist.print_list()
+if __name__ == "__main__":
+  llist = LinkedList()
+  
+  llist.insert_at_beginning(4)
+  llist.insert_at_beginning(5)
+  
+  llist.print_list()
