@@ -23,6 +23,25 @@ class LinkedList:
       
     itr.next = Node(data, None)
 
+  def insert_at(self, index, data):
+    if index < 0 or index > self.get_length():
+      raise Exception("Error invalid index provided.")
+      return None
+
+    if index == 0:
+      self.insert_at_beginning(data)
+      return None
+    itr = self.head
+    count = 0
+    while itr:
+      if count == index - 1:
+        node = Node(data, itr.next)
+        itr.next = node
+        break
+        
+      itr = itr.next
+      count += 1
+
   def insert_values(self, values):
     for value in values:
       self.insert_at_beginning(value)
@@ -75,10 +94,9 @@ if __name__ == "__main__":
   llist = LinkedList()
   
   llist.insert_values([8,9,8,5,7,76,12,65454])
-
   llist.insert_at_end(6543)
-  
-  llist.remove_at(1)
+  llist.insert_at(1,40)
+  # llist.remove_at(0)
   
   llist.print_list()
   
