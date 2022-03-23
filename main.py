@@ -23,13 +23,48 @@ class LinkedList:
       
     itr.next = Node(data, None)
 
+  def insert_values(self, values):
+    for value in values:
+      self.insert_at_beginning(value)
+    return
+
+  def get_length(self):
+    itr = self.head
+    count = 0
+
+    while itr:
+      itr = itr.next
+      count += 1
+    return count
+
+  def remove_at(self, index):
+    if index < 0 or index > self.get_length():
+      raise Exception("Error invalid index provided.")
+      return None
+      
+    if index == 0:
+      self.head = self.head.next
+      return None
+      
+    itr = self.head
+    count = 0
+
+    while itr:
+
+      if count == index - 1:
+        itr.next = itr.next.next
+        break
+        
+      itr = itr.next
+    return None
+
   def print_list(self):
     if self.head is None:
       print("Empty LinkedList")
-      return
+      return None
 
     itr = self.head
-    lstr = " "
+    lstr = ""
 
     while itr:
       lstr += f"{itr.data}--->"
@@ -38,12 +73,12 @@ class LinkedList:
 
 if __name__ == "__main__":
   llist = LinkedList()
-
-  llist.insert_at_beginning(8)
-  llist.insert_at_beginning(9)
-  llist.insert_at_beginning(10)
-  llist.insert_at_beginning(11)
-  llist.insert_at_end(7)
   
+  llist.insert_values([8,9,8,5,7,76,12,65454])
+
+  llist.insert_at_end(6543)
+  
+  llist.remove_at(1)
   
   llist.print_list()
+  
